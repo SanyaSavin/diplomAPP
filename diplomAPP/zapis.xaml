@@ -1,0 +1,26 @@
+﻿<Window x:Class="diplomAPP.zapis"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:diplomAPP"
+        mc:Ignorable="d"
+        Title="Запись на прием" Height="450" Width="800">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/3.png"/>
+        </Grid.Background>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Запись на прием" VerticalAlignment="Top" FontSize="34" Background="White"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,123,0,0" TextWrapping="Wrap" Text="ФИО" VerticalAlignment="Top" FontSize="24" Background="White" Width="243"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" Background="White"><Run Text="Полис обязательного "/><LineBreak/><Run Text="мед.страхования"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,229,0,0" TextWrapping="Wrap" Text="Паспорт (серия, номер)" VerticalAlignment="Top" FontSize="24" Background="White" Width="243"/>
+        <TextBox x:Name="fioTX" HorizontalAlignment="Left" Margin="268,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="503" Height="32"/>
+        <TextBox x:Name="polTX" HorizontalAlignment="Left" Margin="268,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="503" Height="32"/>
+        <TextBox x:Name="pasTX" HorizontalAlignment="Left" Margin="268,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="503" Height="32"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,298,0,0" TextWrapping="Wrap" Text="Услуга" VerticalAlignment="Top" FontSize="24" Background="White" Width="243"/>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="268,298,0,0" VerticalAlignment="Top" Width="503" Height="32" SelectionChanged="comboBox1_SelectionChanged"/>
+        <Button Content="Записаться" HorizontalAlignment="Left" Margin="629,365,0,0" VerticalAlignment="Top" Height="48" Width="142" FontSize="24" Click="Button_Click_1"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Margin="10,365,0,0" VerticalAlignment="Top" Height="48" Width="97" FontSize="24" Click="Button_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,18 @@
+﻿<Window x:Class="diplomAPP.menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:diplomAPP"
+        mc:Ignorable="d"
+        Title="Авторизация как сотрудник или клиент" Height="450" Width="553">
+    <Window.Background>
+        <ImageBrush ImageSource="/1.png"/>
+    </Window.Background>
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Приветствуем!" VerticalAlignment="Top" FontSize="34" Background="White"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,68,0,0" TextWrapping="Wrap" Text="Выберите как вы хотите войти" VerticalAlignment="Top" FontSize="34" Background="White"/>
+        <Button Content="Сотрудник" HorizontalAlignment="Center" Margin="0,177,0,0" VerticalAlignment="Top" Width="322" Height="60" Background="White" FontSize="24" Click="Button_Click"/>
+        <Button Content="Клиент" HorizontalAlignment="Center" Margin="0,269,0,0" VerticalAlignment="Top" Width="322" Height="60" Background="White" FontSize="24" Click="Button_Click_1"/>
+    </Grid>
+</Window>

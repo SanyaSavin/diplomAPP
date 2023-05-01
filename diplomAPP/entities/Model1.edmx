@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище bolnicaDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="loginpass">
+          <Key>
+            <PropertyRef Name="id_logpas" />
+          </Key>
+          <Property Name="id_logpas" Type="int" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="loginpass1">
+          <Key>
+            <PropertyRef Name="id_logpas1" />
+          </Key>
+          <Property Name="id_logpas1" Type="int" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="priem">
+          <Key>
+            <PropertyRef Name="id_priem" />
+          </Key>
+          <Property Name="id_priem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fio" Type="varchar" MaxLength="100" />
+          <Property Name="polis" Type="varchar" MaxLength="100" />
+          <Property Name="pasport" Type="varchar" MaxLength="100" />
+          <Property Name="Name_uslugi" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="id_usluga" Type="int" />
+          <Property Name="id_sot" Type="int" />
+        </EntityType>
+        <EntityType Name="sotrudniki">
+          <Key>
+            <PropertyRef Name="id_sot" />
+          </Key>
+          <Property Name="id_sot" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fio" Type="varchar" MaxLength="100" />
+          <Property Name="adres" Type="varchar" MaxLength="100" />
+          <Property Name="dolznost" Type="varchar" MaxLength="100" />
+          <Property Name="zarplata" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="uslugi">
+          <Key>
+            <PropertyRef Name="id_usluga" />
+          </Key>
+          <Property Name="id_usluga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_uslugi" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_priem_sotrudniki">
+          <End Role="sotrudniki" Type="Self.sotrudniki" Multiplicity="0..1" />
+          <End Role="priem" Type="Self.priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sotrudniki">
+              <PropertyRef Name="id_sot" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="id_sot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_uslugi">
+          <End Role="uslugi" Type="Self.uslugi" Multiplicity="0..1" />
+          <End Role="priem" Type="Self.priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uslugi">
+              <PropertyRef Name="id_usluga" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="id_usluga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище bolnicaDBModelContainer">
+          <EntitySet Name="loginpass" EntityType="Self.loginpass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loginpass1" EntityType="Self.loginpass1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="priem" EntityType="Self.priem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sotrudniki" EntityType="Self.sotrudniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uslugi" EntityType="Self.uslugi" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_priem_sotrudniki" Association="Self.FK_priem_sotrudniki">
+            <End Role="sotrudniki" EntitySet="sotrudniki" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_uslugi" Association="Self.FK_priem_uslugi">
+            <End Role="uslugi" EntitySet="uslugi" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bolnicaDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="loginpass">
+          <Key>
+            <PropertyRef Name="id_logpas" />
+          </Key>
+          <Property Name="id_logpas" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="loginpass1">
+          <Key>
+            <PropertyRef Name="id_logpas1" />
+          </Key>
+          <Property Name="id_logpas1" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="priem">
+          <Key>
+            <PropertyRef Name="id_priem" />
+          </Key>
+          <Property Name="id_priem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="polis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="pasport" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Name_uslugi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="id_usluga" Type="Int32" />
+          <Property Name="id_sot" Type="Int32" />
+          <NavigationProperty Name="sotrudniki" Relationship="Self.FK_priem_sotrudniki" FromRole="priem" ToRole="sotrudniki" />
+          <NavigationProperty Name="uslugi" Relationship="Self.FK_priem_uslugi" FromRole="priem" ToRole="uslugi" />
+        </EntityType>
+        <EntityType Name="sotrudniki">
+          <Key>
+            <PropertyRef Name="id_sot" />
+          </Key>
+          <Property Name="id_sot" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="adres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dolznost" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="zarplata" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="priem" Relationship="Self.FK_priem_sotrudniki" FromRole="sotrudniki" ToRole="priem" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="uslugi">
+          <Key>
+            <PropertyRef Name="id_usluga" />
+          </Key>
+          <Property Name="id_usluga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_uslugi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="priem" Relationship="Self.FK_priem_uslugi" FromRole="uslugi" ToRole="priem" />
+        </EntityType>
+        <Association Name="FK_priem_sotrudniki">
+          <End Role="sotrudniki" Type="Self.sotrudniki" Multiplicity="0..1" />
+          <End Role="priem" Type="Self.priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sotrudniki">
+              <PropertyRef Name="id_sot" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="id_sot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_priem_uslugi">
+          <End Role="uslugi" Type="Self.uslugi" Multiplicity="0..1" />
+          <End Role="priem" Type="Self.priem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uslugi">
+              <PropertyRef Name="id_usluga" />
+            </Principal>
+            <Dependent Role="priem">
+              <PropertyRef Name="id_usluga" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bolnicaDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="loginpass" EntityType="Self.loginpass" />
+          <EntitySet Name="loginpass1" EntityType="Self.loginpass1" />
+          <EntitySet Name="priem" EntityType="Self.priem" />
+          <EntitySet Name="sotrudniki" EntityType="Self.sotrudniki" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="uslugi" EntityType="Self.uslugi" />
+          <AssociationSet Name="FK_priem_sotrudniki" Association="Self.FK_priem_sotrudniki">
+            <End Role="sotrudniki" EntitySet="sotrudniki" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_priem_uslugi" Association="Self.FK_priem_uslugi">
+            <End Role="uslugi" EntitySet="uslugi" />
+            <End Role="priem" EntitySet="priem" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище bolnicaDBModelContainer" CdmEntityContainer="bolnicaDBEntities">
+          <EntitySetMapping Name="loginpass">
+            <EntityTypeMapping TypeName="bolnicaDBModel.loginpass">
+              <MappingFragment StoreEntitySet="loginpass">
+                <ScalarProperty Name="id_logpas" ColumnName="id_logpas" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loginpass1">
+            <EntityTypeMapping TypeName="bolnicaDBModel.loginpass1">
+              <MappingFragment StoreEntitySet="loginpass1">
+                <ScalarProperty Name="id_logpas1" ColumnName="id_logpas1" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="priem">
+            <EntityTypeMapping TypeName="bolnicaDBModel.priem">
+              <MappingFragment StoreEntitySet="priem">
+                <ScalarProperty Name="id_priem" ColumnName="id_priem" />
+                <ScalarProperty Name="fio" ColumnName="fio" />
+                <ScalarProperty Name="polis" ColumnName="polis" />
+                <ScalarProperty Name="pasport" ColumnName="pasport" />
+                <ScalarProperty Name="Name_uslugi" ColumnName="Name_uslugi" />
+                <ScalarProperty Name="id_usluga" ColumnName="id_usluga" />
+                <ScalarProperty Name="id_sot" ColumnName="id_sot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sotrudniki">
+            <EntityTypeMapping TypeName="bolnicaDBModel.sotrudniki">
+              <MappingFragment StoreEntitySet="sotrudniki">
+                <ScalarProperty Name="id_sot" ColumnName="id_sot" />
+                <ScalarProperty Name="fio" ColumnName="fio" />
+                <ScalarProperty Name="adres" ColumnName="adres" />
+                <ScalarProperty Name="dolznost" ColumnName="dolznost" />
+                <ScalarProperty Name="zarplata" ColumnName="zarplata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="bolnicaDBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uslugi">
+            <EntityTypeMapping TypeName="bolnicaDBModel.uslugi">
+              <MappingFragment StoreEntitySet="uslugi">
+                <ScalarProperty Name="id_usluga" ColumnName="id_usluga" />
+                <ScalarProperty Name="Name_uslugi" ColumnName="Name_uslugi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
